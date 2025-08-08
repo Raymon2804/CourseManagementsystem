@@ -1,0 +1,70 @@
+/* * {
+      box-sizing: border-box;
+  } */
+body {
+  /* background:linear-gradient(to bottom,rgb(178, 28, 28),rgb(33, 33, 129)); */
+  background: rgba(236, 151, 236, 0.637);
+  font-family: "Winky Rough", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+h2{
+  justify-content: center;
+  color:blue;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+form {
+  justify-content: center;
+  background:#0a0b0b;
+  backdrop-filter: blur(10px); /* gives a glassmorphic effect */
+  -webkit-backdrop-filter: blur(10px); /* for Safari */
+  padding: 30px 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+label {
+  margin-bottom: 6px;
+  /* font-weight: bold; */
+  color:black;
+}
+input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid blue;
+  font-size: 14px;
+  background-color:white;
+}
+button {
+  padding: 12px;
+  border: 1px solid green;
+  border-radius: 10px;
+  background-color:transparent;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: green;
+}
+    @media (max-width: 480px) {
+      form {
+        padding: 20px;
+      }
+      input,button {
+        font-size: 15px;
+      }
+}

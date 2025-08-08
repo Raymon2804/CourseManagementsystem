@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/login.css">
+</head>
+<body>
+    <% if(role == "teacher"){ %>
+        <form action="/teacher/login" method="post">
+            <h2>Instructor Login</h2>
+            <label for="email">Email:</label>
+            <input type="email" name="email" placeholder="email">
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="password">
+            <button type="submit">Login</button>
+        </form>
+    <% } else if (role == "student"){%>
+
+    <form action="/student/login" method="post">
+        <h2>Student Login</h2>
+        <label for="username">username:</label>
+        <input type="text" name="username" placeholder="name">
+        <label for="password">Password:</label>
+        <input type="password" name="password" placeholder="password">
+        <button type="submit">Login</button>
+    </form>
+    <% } %>
+</body>
+<!-- <style>
+    * {
+      box-sizing: border-box;
+  }
+body {
+  background:linear-gradient(to bottom,rgb(178, 28, 28),rgb(33, 33, 129));
+  /* background: whitesmoke; */
+  font-family: "Winky Rough", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+h1{
+  color:red;
+  display: flex;
+  flex-direction: column;
+
+} -->
+</style>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit courses</title>
+    <link rel="stylesheet" href="/editCourses.css">
+
+</head>
+<body>
+    <form action="/teacher/courses/edit/<%=courses.id%> "method="post">
+
+        <input type="text" name="courses" value="<%=courses.course %>" placeholder="Courses">
+        <input type="text" name="duration" value="<%=courses.duration %>" placeholder="Course duration">
+        <input type="text" name="price" value="<%=courses.price %>" placeholder="fees">
+        <button type="submit">Edit</button>
+    </form>
+</body>
+</html>
