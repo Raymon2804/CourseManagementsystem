@@ -31,7 +31,7 @@ router.post("/login",async(req,res)=>{
     if(user && user.password === password){
         res.redirect(`/student/course/${username}`);
     }else{
-        res.send("check your credentials");
+        console.alert("Check your Credentials");
     }
 })
 

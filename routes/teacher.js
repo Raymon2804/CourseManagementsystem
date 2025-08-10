@@ -6,7 +6,7 @@ const enrollment = require("../models/enrollment");
 
 //login-page
 router.get("/login",(req,res)=>{
-    res.render("login.ejs",{role:"teacher"});
+    res.render("login.ejs",{role:"teacher",error: req.query.error});
 });
 //authentication 
 router.post("/login",async(req,res)=>{
@@ -15,7 +15,11 @@ router.post("/login",async(req,res)=>{
     if(teachers && teachers.password === password){
         res.redirect("/teacher/course");
     }else{
-        res.send("check your credentials");
+        // res.send(`<script>
+        //     alert("check your creds");
+        //     window.location.href="/teacher/login"
+        //     </script>`)
+        res.redirect("/teacher/login/?error=1");
     }
 })
 
