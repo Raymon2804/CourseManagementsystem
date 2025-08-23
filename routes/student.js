@@ -33,7 +33,7 @@ router.post("/login", async (req, res) => {
   } else {
     res.send(`<script>
             alert("check your creds");
-            window.location.href="/teacher/login"
+            window.location.href="/student/login"
             </script>`);
   }
 });
