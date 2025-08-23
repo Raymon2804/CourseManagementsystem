@@ -12,6 +12,14 @@
     <ul id="courseList">
     <h1>ALL COURSES</h1>
     <ul>
+        <%if(role === "user") {%>
+                <% courses.forEach(course=>{ %>
+      <li class="course-item">
+        <h3><%= course.course %></h3>
+        <h4><%= course.duration %></h4>
+        <h4><%= course.price %></h4>
+                <%})%>
+          <% } %>
       <% courses.forEach(course=>{ %>
       <li class="course-item">
         <h3><%= course.course %></h3>
@@ -23,11 +31,9 @@
           <input type="hidden" name="course" value="<%=course.course%>" />
           <button type="submit">Enroll</button>
         </form>
-        <%}else if(role === "teacher") {%>
-
-        <%}%>
+        <%} %>
+        <%})%>
       </li>
-      <% }) %>
       <% if(role === "teacher"){%>
         <form action="/teacher/enrollment" method="get" >
           <button type="submit" id="enrolledlist">EnrolledList</button>

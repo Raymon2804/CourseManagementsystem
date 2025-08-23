@@ -2,6 +2,7 @@ const express=require("express");
 const app=express();
 const studentRoute=require("./routes/student");
 const teacherRoute=require("./routes/teacher");
+const userRoute=require("./routes/user");
 const mongoose=require("mongoose");
 require("dotenv").config();
 const PORT=process.env.port;
@@ -19,6 +20,7 @@ app.use(express.urlencoded({extended:true}));
 app.set("view engine","ejs");
 app.use("/student",studentRoute);
 app.use("/teacher",teacherRoute);
+app.use("/",userRoute);
 
 app.get("/home",(req,res)=>{
     res.render("home.ejs");
