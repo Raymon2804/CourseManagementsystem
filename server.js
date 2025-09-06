@@ -6,8 +6,7 @@ const userRoute=require("./routes/user");
 const mongoose=require("mongoose");
 require("dotenv").config();
 const PORT=process.env.port;
-const MONGODB_URL=process.env.mongodb_url;
-
+const MONGODB_URL=process.env.mongodb_url;  //hello
 
 mongoose.connect(MONGODB_URL).then(()=>{
     console.log("mongodb is connected....")
