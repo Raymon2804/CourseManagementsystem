@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="/teacher/enrollment/edit/<%=enrollments.id%>" method="post">
+        <h3>For : <%=enrollments.username %></h3>
+        <label for="course">   
+            <select name="course">
+                <% courses.forEach(course=>{%>
+                <option value="<%=course.course %>"><%=course.course %></option>
+                <%}) %>
+            </select>     
+        </label>
+        <button type="submit">Save</button>
+    </form>
+
+</body>
+</html>

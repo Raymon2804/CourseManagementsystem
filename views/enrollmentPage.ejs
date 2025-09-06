@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <% enrollments.forEach(enroll => { %>
+  <div class="enrollment">
+    <h3>User: <%= enroll.username %></h3>
+    <h3>Course: <%= enroll.course %></h3>
+    <form action="/teacher/enrollment/edit/<%=enroll.id%>">
+      <button type="submit">Edit</button>
+    </form>
+  </div>
+<% }) %>
+
+
+</body>
+</html>

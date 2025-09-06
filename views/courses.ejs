@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses</title>
+    <link rel="stylesheet" href="/courses.css">
+
+  </head>
+  <body>
+    <input type="text" id="searchInput" placeholder="Search courses..." />
+    <ul id="courseList">
+    <h1>ALL COURSES</h1>
+    <ul>
+        <%if(role === "user") {%>
+                <% courses.forEach(course=>{ %>
+      <li class="course-item">
+        <h3><%= course.course %></h3>
+        <h4><%= course.duration %></h4>
+        <h4><%= course.price %></h4>
+                <%})%>
+          <% } %>
+      <% courses.forEach(course=>{ %>
+      <li class="course-item">
+        <h3><%= course.course %></h3>
+        <h4><%= course.duration %></h4>
+        <h4><%= course.price %></h4>
+        <% if(role === "student"){ %>
+        <form action="/student/enrolled/" method="post">
+          <input type="hidden" name="username" value="<%=students.username%>" />
+          <input type="hidden" name="course" value="<%=course.course%>" />
+          <button type="submit">Enroll</button>
+        </form>
+        <%} %>
+        <%})%>
+      </li>
+      <% if(role === "teacher"){%>
+        <form action="/teacher/enrollment" method="get" >
+          <button type="submit" id="enrolledlist">EnrolledList</button>
+        </form>   
+                <form action="/teacher/courses/add" method="get">
+          <button type="submit">ADD</button>
+        </form>
+      <% } %>
+    </ul>
+  </body>
+  
+<script>
+  const input = document.getElementById("searchInput");
+  const items = document.querySelectorAll(".course-item");
+
+  input.addEventListener("input", () => {
+    const query = input.value.toLowerCase();
+    items.forEach(item => {
+      const title = item.querySelector("h3").innerText.toLowerCase();
+      item.style.display = title.includes(query) ? "block" : "none";
+    });
+  });
+</script>
+</html>
