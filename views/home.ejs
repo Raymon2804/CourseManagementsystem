@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="/home.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Course Management System</h1>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#image-container">COURSES</a></li>
+                    <li><a href="#contact">CONTACT US</a></li>
+                    <li>
+                    <a href="#">LOGIN</a>
+                    <ul>
+                    <li><a href="/student/login">Student</a></li>
+                    <li><a href="/teacher/login">Teacher</a></li>
+                      </ul>  
+                    </li>
+                </ul>
+            </nav>
+        </header>
+<!-- Images -->
+        <div id="image-container">
+            <h2 id="img-h2" style="color:coral";>Courses</h2>
+            <main>
+                <div class="Course-stack">
+                <h3 style="color:black;">Web Development</h3>
+                <img src="./image/Web1.jpg" alt="Web Development">
+                <div class="course-info"><p>Describe the Web Application Development Ecosystem and terminology 
+                    like front-end developer, back-end, server-side, and full stack. </p></div>
+                </div>
+
+
+                <div class="Course-stack">
+                <h3 style="color:black=dbms;">DBMS</h3>
+                <img src="./image/dbms1.jpg" alt="DBMS">
+                <div class="course-info"><p>In this course, you will be introduced to databases and explore 
+                    the modern ways in which they are used.</p></div>
+                    <!-- <span style="color: dodgerblue; align-items: center;"> Beginner . Course-1.2 years</span> -->
+                </div>
+                
+                <div class="Course-stack">
+                <h3 style="color:black;">Full Stack Development</h3>
+                <img src="./image/fullstack.png" alt="Full Stack Development">
+                <div class="course-info"><p>A Full Stack Developer builds and languages like JavaScript, Python, and SQL, along with cloud services. </p></div>
+                </div>
+                
+                <div class="Course-stack">
+                <h3 style="color:black;">IOS Developer</h3>
+                <img src="./image/iosdev.jpeg" alt="IOS Development">
+                <div class="course-info"><p>An iOS Developer creates and maintains mobile applications for iOS devices.
+                    innovation using Swift and the iOS SDK, ensuring compatibility across Apple’s ecosystem.</p></div>
+                </div>
+
+                <div class="Course-stack">
+                <h3 style="color:black;">Cyber Security</h3>
+                <img src="./image/cybersec.png" alt="Cyber Security">
+                <div class="course-info"><p>A Cyber Security Analyst monitors and secures an organization’s IT infrastructure.
+                    implement security measures to protect sensitive data from cyber attacks. </p></div>
+                </div>
+
+                <div class="Course-stack">
+                <h3 style="color:black;">Python Development</h3>
+                <img src="./image/pythondev.jpg" alt="Python Development">
+                <div class="course-infdevo"><p>A Python Developer writes and debugs Python code for diverse software 
+                    applications, from web apps to data analysis, utilizing powerful libraries and frameworks. </p></div>
+                </div>
+
+
+                <div class="Course-stack">
+                <h3 style="color:black;">Machine Learning</h3>
+                <img src="./image/machinelearning.png" alt="Machine Learning">
+                <div class="course-info"><p>A Machine Learning Engineer builds and optimizes algorithms that enable 
+                    computers to learn from data. They work with large datasets, develop models.</p></div>
+                </div>
+                
+                <div class="Course-stack">
+                <h3 style="color:black;">AI Intelligence</h3>
+                <img src="./image/AI_Assistance.jpeg" alt="AI Intelligence">
+                <div class="course-info"><p>Artificial Intelligence (AI) is all around us, seamlessly integrated 
+                    into our daily lives and work. Enroll in this course to understand key AI terminologies.</p></div>
+                </div>
+            </main>
+        </div>
+
+        <section>
+            <div class="cards" style="background:linear-gradient(45deg, #ff512f, #dd2476);">
+                <h2>200+</h2><span>Courses</span>
+            </div>
+            <div class="cards" style="background:linear-gradient(45deg, #ff512f, #dd2476);">
+                <h2>100+</h2><span>Best Teachers</span>
+            </div>
+            <div class="cards" style="background:linear-gradient(45deg, #ff512f, #dd2476);">
+                <h2>1000+</h2><span>Placements</span>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-section" id="contact">
+            <div class="contact">
+            <p><strong>Address:</strong> 123 MG Road, Mumbai ,Maharashtra</p>
+            <p><strong>Phone:</strong> +91 88775 42410</p>
+            <p><strong>Email:</strong> contact@cms.com</p>
+            <p><strong>Timings:</strong> Mon - Sun, 9:00 AM - 10:00 PM</p>
+            </div>
+        </section>
+
+        <!-- footer -->
+        <div id="footer-container">
+        <footer>
+        <span>@2025</span>
+        <span style="color:orange;">| Course Management System |</span>
+        <span>All Rights Reserved</span>
+  </footer>
+</div>
+   </div>
+      <script>
+    // Toggle hamburger and nav
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
+
+    // Dropdown toggle for mobile
+    document.querySelectorAll("nav ul li > a").forEach(link => {
+      link.addEventListener("click", (e) => {
+        const parentLi = link.parentElement;
+        if (parentLi.querySelector("ul")) {
+          e.preventDefault(); // prevent navigation
+          parentLi.classList.toggle("show");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

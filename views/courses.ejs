@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses</title>
+    <link rel="stylesheet" href="/courses.css">
+
+  </head>
+  <body>
+    <div class="container">
+        <header>
+            <h1>Course Management System</h1>
+            <a href="/home" class="back-to-home">Back to Home</a>
+          </header>
+<div class="heading-search">
+    <h1 id="course-heading">ALL COURSES</h1>
+    <input type="text" id="searchInput" placeholder="Search courses..." /></div>
+    <ul id="courseList">
+    <ul>
+        <%if(role === "user") {%>
+        <% courses.forEach(course=>{ %>
+      <li class="course-item" class="even">
+        <h3><%= course.course %></h3>
+        <h4><%= course.duration %></h4>
+        <h4><%= course.price %></h4>
+                <%})%>
+          <% } %>
+      <% courses.forEach(course=>{ %>
+      <li class="course-item" class="odd">
+        <h3><%= course.course %></h3>
+        <h4><%= course.duration %></h4>
+        <h4><%= course.price %></h4>
+        <% if(role === "student"){ %>
+        <form action="/student/enrolled/" method="post">
+          <input type="hidden" name="username" value="<%=students.username%>" />
+          <input type="hidden" name="course" value="<%=course.course%>" />
+          <button type="submit">Enroll</button>
+        </form>
+        <%} %>
+        <%})%>
+      </li>
+    </ul>
+      <div class="enroll-add-button">
+      <% if(role === "teacher"){%>
+        <form action="/teacher/enrollment" method="get" >
+          <button type="submit" class="enroll-button">EnrolledList</button>
+        </form>   
+        <form action="/teacher/courses/add" method="get">
+        <button type="submit" class="enroll-button">ADD</button>
+        </form>
+      <% } %>
+      </div>
+
+        <!-- footer -->
+        <div id="footer-container">
+        <footer>
+        <span>@2025</span>
+        <span style="color:orange;">| Course Management System |</span>
+        <span>All Rights Reserved</span>
+  </footer>
+</div>
+</div>
+
+</body>
+<script>
+  const input = document.getElementById("searchInput");
+  const items = document.querySelectorAll(".course-item");
+
+  input.addEventListener("input", () => {
+    const query = input.value.toLowerCase();
+    items.forEach(item => {
+      const title = item.querySelector("h3").innerText.toLowerCase();
+      item.style.display = title.includes(query) ? "block" : "none";
+    });
+  });
+</script>
+</html>
