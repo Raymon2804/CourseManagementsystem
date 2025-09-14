@@ -19,8 +19,8 @@
   <% enrollments.forEach(enroll => { %>
     <h3>User: <%= enroll.username %></h3>
     <h3>Course: <%= enroll.course %></h3>
-    <form action="/teacher/enrollment/edit/<%=enroll.id%>">
-      <button type="submit">Edit</button>
+    <form action="/teacher/enrollment/delete/<%=enroll.id%>" method="post">
+      <button type="submit">delete</button>
     </form>
 <% }) %>
   </div>

@@ -18,14 +18,6 @@
     <input type="text" id="searchInput" placeholder="Search courses..." /></div>
     <ul id="courseList">
     <ul>
-        <%if(role === "user") {%>
-        <% courses.forEach(course=>{ %>
-      <li class="course-item" class="even">
-        <h3><%= course.course %></h3>
-        <h4><%= course.duration %></h4>
-        <h4><%= course.price %></h4>
-                <%})%>
-          <% } %>
       <% courses.forEach(course=>{ %>
       <li class="course-item" class="odd">
         <h3><%= course.course %></h3>

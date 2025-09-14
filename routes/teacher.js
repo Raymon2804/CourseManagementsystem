@@ -29,10 +29,10 @@ router.get("/course",async(req,res)=>{
 })
 
 //delete
-router.post("/delete/:id",async(req,res)=>{
-    await course.findByIdAndDelete(req.params.id);
-    res.redirect("/teacher/course");
-})
+// router.post("/enrollment/delete/:id",async(req,res)=>{
+//     await course.findByIdAndDelete(req.params.id);
+//     res.redirect("/teacher/course");
+// })
 
 //shows addcourseform
 router.get("/courses/add",(req,res)=>{
@@ -61,17 +61,10 @@ router.get("/enrollment",async(req,res)=>{
     res.render("enrollmentPage.ejs",{enrollments})
 })
 
-//enrollment_data_edit
-router.get("/enrollment/edit/:id",async(req,res)=>{
-    const courses=await course.find();
-    const enrollments=await enrollment.findById(req.params.id);
-    res.render("enrollEdit.ejs",{enrollments,courses});
-})
-
-router.post("/enrollment/edit/:id",async(req,res)=>{
-    const{course}=req.body;
-    await enrollment.findByIdAndUpdate(req.params.id,{course});
-    res.redirect("/teacher/course");
+//enrollment_data_delete
+router.post("/enrollment/delete/:id",async(req,res)=>{
+    await enrollment.findByIdAndDelete(req.params.id);
+    res.redirect("/teacher/enrollment")
 })
 
 module.exports=router;
