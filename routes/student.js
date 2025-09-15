@@ -36,5 +36,23 @@ router.post("/login", async (req, res) => {
             </script>`);
   }
 });
+//sign up page 
+router.get("/signup",(req,res)=>{
+  res.render("signup.ejs");
+})
+
+router.post("/signup",async(req,res)=>{
+  const{username,password,confirmPassword}=req.body;
+  if(password !== confirmPassword){
+    return res.status(400).send("check your password");
+  }
+  const existingStud=await student.findOne({username});
+  if(existingStud){
+    return res.status(400).send("Username already exists");
+  }
+  const newstudent= new student({username,password});
+  await newstudent.save();
+  res.redirect("/student/login");
+})
 
 module.exports = router;
