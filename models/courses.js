@@ -1,7 +1,18 @@
 const mongoose=require("mongoose");
 const courseSchema= new mongoose.Schema({
-    course:String,
-    duration:String,
-    price:String
+    course:{
+        type:String,
+        required:true,
+        unique:true
+        },
+    duration:{
+        type:String,
+        required:true,
+        },
+    price:{
+        type:Number,
+        required:true,
+        min:0
+    }
 })
 module.exports=mongoose.model("course",courseSchema);

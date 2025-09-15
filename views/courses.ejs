@@ -22,7 +22,7 @@
       <li class="course-item" class="odd">
         <h3><%= course.course %></h3>
         <h4><%= course.duration %></h4>
-        <h4><%= course.price %></h4>
+        <h4>₹<%= course.price %></h4>
         <% if(role === "student"){ %>
         <form action="/student/enrolled/" method="post">
           <input type="hidden" name="username" value="<%=students.username%>" />
