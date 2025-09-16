@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Enrollments</title>
-    <link rel="stylesheet" href="/enrollmentPage.css">
-
-</head>
-<body>
-
-  <div class="container">
+    <link rel="stylesheet" href="/enrollmentPage.css" />
+  </head>
+  <body>
+    <div class="container">
       <header>
         <h1>Course Management System</h1>
-        <a href="/home" class="back-to-home">Back to Home</a></header>
-</div>
+        <a href="/home" class="back-to-home">Back to Home</a>
+      </header>
+    </div>
 
-  <div class="enrollment">
-  <% enrollments.forEach(enroll => { %>
-    <h3>User: <%= enroll.username %></h3>
-    <h3>Course: <%= enroll.course %></h3>
-    <form action="/teacher/enrollment/delete/<%=enroll.id%>" method="post">
-      <button type="submit">delete</button>
-    </form>
-<% }) %>
-  </div>
+    <div class="enrollment">
+      <% enrollments.forEach(enroll => { %>
+      <tr>
+        <td>User: <%= enroll.username %></td>
+        <td>Course: <%= enroll.course %></td>
+        <td>Status:<% enroll.Status %></td>
+        <td>
+          <form action="/teacher/enrollment/approve/<%=enroll.id%>"method="post">
+            <button type="submit">approve</button>
+          </form>
+        </td>
+        <td>
+          <form action="/teacher/enrollment/delete/<%=enroll.id%>"method="post">
+            <button type="submit">delete</button>
+          </form>
+        </td>
+      </tr>
 
-        <!-- footer -->
-        <div id="footer-container">
-        <footer>
+      <% }) %>
+    </div>
+
+    <!-- footer -->
+    <div id="footer-container">
+      <footer>
         <span>@2025</span>
-        <span style="color:orange;">| Course Management System |</span>
+        <span style="color: orange">| Course Management System |</span>
         <span>All Rights Reserved</span>
-  </footer>
-</div>
-
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

@@ -28,12 +28,6 @@ router.get("/course",async(req,res)=>{
     res.render("courses.ejs",{courses,role:"teacher"})
 })
 
-//delete
-// router.post("/enrollment/delete/:id",async(req,res)=>{
-//     await course.findByIdAndDelete(req.params.id);
-//     res.redirect("/teacher/course");
-// })
-
 //shows addcourseform
 router.get("/courses/add",(req,res)=>{
     res.render("addCourses.ejs");
@@ -66,5 +60,15 @@ router.post("/enrollment/delete/:id",async(req,res)=>{
     await enrollment.findByIdAndDelete(req.params.id);
     res.redirect("/teacher/enrollment")
 })
+
+router.post("/enrollment/approve/:id",async(req,res)=>{
+    await enrollment.findByIdAndUpdate(req.params.id,{status:"approved"});
+    
+})
+router.get("/enrollment/approve/:id",async(req,res)=>{
+   res.redirect("teacher/course");   
+})
+
+
 
 module.exports=router;
