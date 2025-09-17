@@ -13,6 +13,8 @@ const courseSchema= new mongoose.Schema({
         type:Number,
         required:true,
         min:0
-    }
+    },
+    img:String,
+    para:String
 })
 module.exports=mongoose.model("course",courseSchema);

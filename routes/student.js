@@ -17,7 +17,6 @@ router.get("/course/:username", async (req, res) => {
   const { username } = req.params;
   const courses = await course.find();
   const studentsData = await student.findOne({ username });
-  console.log(studentsData);
   res.render("courses.ejs", { students:studentsData, courses, role: "student" });
 })
 
@@ -25,6 +24,7 @@ router.get("/course/:username/:courseid",async(req,res)=>{
   const {username,courseid}=req.params;
   const studentData=await student.findOne({username});
   const courseData=await course.findById(courseid);
+  console.log(courseData.img);
   res.render("courseDetail.ejs",{studentData,course:courseData});
 })
 //login page

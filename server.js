@@ -2,7 +2,10 @@ const express=require("express");
 const app=express();
 const studentRoute=require("./routes/student");
 const teacherRoute=require("./routes/teacher");
+const courses=require("./models/courses")
 const mongoose=require("mongoose");
+const fs = require("fs");
+const path= require("path");
 require("dotenv").config();
 const PORT=process.env.port;
 const MONGODB_URL=process.env.mongodb_url;
@@ -14,7 +17,9 @@ mongoose.connect(MONGODB_URL).then(()=>{
     console.log("error is: ",err);
 })
 
-app.use(express.static("public"));
+
+
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({extended:true}));
 app.set("view engine","ejs");
 app.use("/student",studentRoute);
@@ -26,4 +31,4 @@ app.get("/home",(req,res)=>{
 
 app.listen(PORT,()=>{
     console.log("server is listening...");
-})
+});
