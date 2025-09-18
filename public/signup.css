@@ -25,11 +25,15 @@ header {
   justify-content: space-between;
 }
 
-/* ---------------- Back to Home Button ---------------- */
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* ---------------- Back to Home ---------------- */
 .back-to-home {
   display: inline-block;
-  margin-top: 10px;
-  padding: 15px 38px;
+  padding: 10px 15px;
   background: gold;
   color: #191442;
   font-weight: bold;
@@ -41,7 +45,7 @@ header {
   background: orange;
 }
 
-/* ---------------- Login Form Container ---------------- */
+/* ---------------- Form Container ---------------- */
 .login-form {
   flex: 1;
   display: flex;
@@ -50,7 +54,7 @@ header {
   padding: 20px;
 }
 
-/* ---------------- Login Box ---------------- */
+/* ---------------- Form Box ---------------- */
 .form {
   background: radial-gradient(rgb(232, 235, 241), rgb(133, 167, 230));
   border-radius: 20px;
@@ -66,9 +70,10 @@ header {
   color: black;
   font-weight: bold;
   background-color: gold;
+  padding: 5px 0;
+  border-radius: 8px;
 }
 
-/* Labels and Inputs */
 .form label {
   display: block;
   text-align: left;
@@ -86,26 +91,27 @@ header {
   font-size: 1rem;
 }
 
-/* Submit Button */
-.form button {
+/* ---------------- Buttons ---------------- */
+button.signup-button {
   width: 100%;
   padding: 12px;
   border: none;
   border-radius: 8px;
-  background: gold;
-  color: #191442;
+  background: rgba(25, 20, 66, 0.8); /* dark translucent */
+  color: gold;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease;
   font-size: 1rem;
 }
 
-.form button:hover {
-  background: orange;
+button.signup-button:hover {
+  background: gold;
+  color: #191442;
 }
 
 /* ---------------- Footer ---------------- */
-#footer-container, footer {
+footer {
   font-weight: bold;
   text-align: center;
   padding: 10px 0;
@@ -116,11 +122,6 @@ header {
 
 /* ---------------- Responsive ---------------- */
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-  }
-
   .form {
     width: 90%;
     padding: 25px;
@@ -130,7 +131,7 @@ header {
     font-size: 1.5rem;
   }
 
-  .form input, .form button {
+  .form input, button.signup-button {
     font-size: 1rem;
     padding: 10px;
   }
@@ -138,11 +139,6 @@ header {
   .back-to-home {
     padding: 8px 12px;
     font-size: 0.9rem;
-  }
-
-  #footer-container {
-    font-size: 0.9rem;
-    padding: 8px;
   }
 }
 
@@ -156,36 +152,8 @@ header {
     font-size: 1.2rem;
   }
 
-  .form input, .form button {
+  .form input, button.signup-button {
     font-size: 0.9rem;
     padding: 8px;
   }
-
-  header {
-    font-size: 0.9rem;
-    padding: 10px;
-  }
-
-  #footer-container {
-    font-size: 0.8rem;
-  }
-}
-/* ---------------- Signup link button ---------------- */
-.signup-link {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px 155px;
-  background: rgba(25, 20, 66, 0.8); /* dark translucent */
-  color: gold;
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: 0.3s ease;
-  text-align: center;
-}
-
-.signup-link:hover {
-  background: gold;
-  color: #191442;
 }

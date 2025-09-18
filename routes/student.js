@@ -8,24 +8,29 @@ const enrollment = require("../models/enrollment");
 router.post("/enrolled", async (req, res) => {
   const { username,course } = req.body;
   const students = await student.findOne({ username });
+  const existing= await enrollment.findOne({username, course,})
+  if(existing){
+    console.log("already existing");
+  }
   await enrollment.create({username,course,status:"pending"});
-  res.render("enroll.ejs", { students });
-})
+  console.log("Enrollment request sent");
+  res.render("enroll.ejs", { students: students, message: "pending" });
+  })
 
 //view all the courses
 router.get("/course/:username", async (req, res) => {
   const { username } = req.params;
   const courses = await course.find();
   const studentsData = await student.findOne({ username });
-  res.render("courses.ejs", { students:studentsData, courses, role: "student" });
+  const enrolled= await enrollment.find({username})
+  res.render("courses.ejs", { students:studentsData, courses, role: "student",enrolled });
 })
 
 router.get("/course/:username/:courseid",async(req,res)=>{
   const {username,courseid}=req.params;
   const studentData=await student.findOne({username});
   const courseData=await course.findById(courseid);
-  console.log(courseData.img);
-  res.render("courseDetail.ejs",{studentData,course:courseData});
+  res.render("courseDetail.ejs",{students:studentData,course:courseData});
 })
 //login page
 router.get("/login", (req, res) => {

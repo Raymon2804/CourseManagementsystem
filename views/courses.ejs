@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Courses</title>
-    <!-- <link rel="stylesheet" href="/courses.css"> -->
+    <link rel="stylesheet" href="/courses.css">
 
   </head>
   <body>
-    <p>Username: <%= students.username %></p>
 
     <div class="container">
         <header>
@@ -19,40 +18,50 @@
 
     <h1 id="course-heading">ALL COURSES</h1>
     <input type="text" id="searchInput" placeholder="Search courses..." /></div>
-    <ul id="courseList">
+    <ul id="courseList">      
       <% courses.forEach(course=>{ %>
 
+      <% if(role === "student"){ %>
       <li class="course-item" class="odd">
         <h3><a href="/student/course/<%= students.username %>/<%= course._id %>"><%= course.course %></a></h3>
         <h4><%= course.duration %></h4>
         <h4>₹<%= course.price %></h4>
+         
+        <% if (enrolled.status === "pending") { %>
+  <button disabled>Pending</button>
+  <% } else if (enrolled.status === "accepted") { %>
+  <button disabled>Enrolled</button>
+  <% } else { %>
+  <form action="/student/enrolled" method="post">
+    <input type="hidden" name="username" value="<%= students.username %>" />
+    <input type="hidden" name="course" value="<%= course.course %>" />
+    <button type="submit">Enroll</button>
+  </form>
+    <% } %>
 
-        <% if(role === "student"){ %>
-        <form action="/student/enrolled" method="post">
-            <input type="hidden" name="username" value="<%=students.username%>" />
-            <input type="hidden" name="course" value="<%=course.course%>" />
-            <button type="submit">Enroll</button>
-        </form>
-        <%} %>
       </li>
+     
+      <%} %>
+        <% if(role === "teacher"){%>
+      <li class="course-item" class="odd">       
+        <h3><%= course.course %></a></h3>
+        <h4><%= course.duration %></h4>
+        <h4>₹<%= course.price %></h4>
+     </li> 
+      <% } %>
         <%})%>
-        </ul>
-
-   
-      <div class="enroll-add-button">
-
-      <% if(role === "teacher"){%>
-
-        <form action="/teacher/enrollment" method="get" >
+        <% if(role === "teacher"){%>
+          <div class="enroll-add-button">
+          <form action="/teacher/enrollment" method="get" >
           <button type="submit" class="enroll-button">EnrolledList</button>
         </form> 
 
         <form action="/teacher/courses/add" method="get">
           <button type="submit" class="enroll-button">ADD</button>
         </form>
-
-      <% } %>
-      </div>
+        </div>
+          <% } %>
+        </ul>
 
         <!-- footer -->
         <div id="footer-container">

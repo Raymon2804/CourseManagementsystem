@@ -1,103 +1,119 @@
-body {
+/* ---------------- General ---------------- */
+html, body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f9f9f9;
-  color: #191442;
-  /* background-image: url("/bg_imag.png"); */
+  color: white;
+  background: linear-gradient(to right, #191442, white, #191442);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-    header {
-      background:linear-gradient(to right,#191442,#4b428e,#191442);
-      color: gold;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      /* z-index: 1000; */
-    }
-    header h1 {
-      font-size: 1.5rem;
-    }
 
-  .back-to-home {
+/* ---------------- Header ---------------- */
+header {
+  background: linear-gradient(to right, #191442, #4b428e, #191442);
+  color: gold;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+/* ---------------- Back to Home ---------------- */
+.back-to-home {
   display: inline-block;
-  margin-top: 15px;
-  padding: 10px 15px;
-  background: gold;
-  color: #191442;
+  padding: 12px 25px;
+  background: rgba(25, 20, 66, 0.8);
+  color: gold;
   font-weight: bold;
-  border-radius: 6px;
+  border-radius: 8px;
   text-decoration: none;
   transition: 0.3s ease;
 }
 
 .back-to-home:hover {
-  background: orange;
+  background: gold;
+  color: #191442;
 }
+
+/* ---------------- Form Container ---------------- */
 #form {
-
-  flex: 2; /* take available space */
+  flex: 1; 
   display: flex;
   justify-content: center;
   align-items: center;
-  margin :50px
+  margin: 50px 0;
 }
-    form {
-      background: #f9f9f9;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-      display: flex;
-      flex-direction:column;
-      gap: 12px;
-      width: 300px;
-    }
 
-    form input, form button {
-      padding: 10px;
-      border: none;
-      border-radius: 12px;
-      font-size: 1rem;
-    }
-
-    form input {
-      background: #eee;
-    }
-
-    form button {
-      background: gold;
-      color: #191442;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    form button:hover {
-      background: orange;
-    }
-
-    /* footer */
-#footer-container{
+/* ---------------- Form Box ---------------- */
+form {
+  background: radial-gradient(rgb(232, 235, 241), rgb(133, 167, 230));
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background:linear-gradient(to right,#191442,#4b428e,#191442);
-  /* margin: 0 15px 0 0; */
-
-
+  flex-direction: column;
+  gap: 15px;
+  width: 350px;
+  color: #191442;
 }
-footer{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap:20px;
-  padding: 16px;
+
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: gold;
   font-weight: bold;
-  margin-top: 50px;
-  margin-bottom: 40px;
+}
+
+/* ---------------- Inputs & Buttons ---------------- */
+form input, 
+form button {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+}
+
+form input {
+  background: #f1f1f1;
+}
+
+form button {
+  background: rgba(25, 20, 66, 0.8);
+  color: gold;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+form button:hover {
+  background: gold;
+  color: #191442;
+}
+
+/* ---------------- Footer ---------------- */
+#footer-container {
+  background: linear-gradient(to right, #191442, #4b428e, #191442);
   color: white;
 }
 
-/* Responsive Styling */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ---------------- Responsive ---------------- */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -109,32 +125,18 @@ footer{
     font-size: 1.3rem;
   }
 
-  .back-to-home {
-    margin-top: 8px;
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
-
   #form {
     margin: 30px 10px;
   }
 
   form {
-    width: 90%; /* shrink form for tablets */
-    padding: 20px;
-  }
-
-  form input, 
-  form button {
-    font-size: 0.95rem;
-    padding: 9px;
+    width: 90%;
+    padding: 25px;
   }
 
   footer {
     flex-direction: column;
-    text-align: center;
-    gap: 8px;
-    margin: 20px 0;
+    gap: 10px;
     font-size: 0.9rem;
   }
 }
@@ -144,32 +146,22 @@ footer{
     font-size: 1.1rem;
   }
 
-  .back-to-home {
-    width: 100%;
-    text-align: center;
-    font-size: 0.85rem;
-  }
-
   #form {
     margin: 20px 5px;
   }
 
   form {
-    width: 100%; /* full width on mobile */
-    padding: 15px;
+    width: 95%;
+    padding: 20px;
   }
 
-  form input, 
-  form button {
-    font-size: 0.85rem;
-    padding: 8px;
+  form input, form button {
+    font-size: 0.9rem;
+    padding: 10px;
   }
 
   footer {
     font-size: 0.8rem;
-    padding: 10px;
-    margin: 15px 0;
+    padding: 12px;
   }
 }
-
-

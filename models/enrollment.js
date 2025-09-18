@@ -4,8 +4,7 @@ const enrollmentSchema=new mongoose.Schema({
     course:String,
     status:{
         type:String,
-        enum:["pending","approved"],
-        default:"pending"
+        enum:["pending","approved"]
     }
 })
 module.exports=mongoose.model("enrollment",enrollmentSchema);

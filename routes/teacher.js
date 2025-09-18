@@ -63,11 +63,12 @@ router.post("/enrollment/delete/:id",async(req,res)=>{
 
 router.post("/enrollment/approve/:id",async(req,res)=>{
     await enrollment.findByIdAndUpdate(req.params.id,{status:"approved"});
+    res.render("courses.ejs")
     
 })
-router.get("/enrollment/approve/:id",async(req,res)=>{
-   res.redirect("teacher/course");   
-})
+// router.get("/enrollment/approve/:id",async(req,res)=>{
+//    res.redirect("teacher/course");   
+// })
 
 
 

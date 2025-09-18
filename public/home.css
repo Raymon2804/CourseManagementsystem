@@ -21,55 +21,51 @@ body {
       font-size: 1.5rem;
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
 
-    nav ul li {
-      position: relative;
-    }
+nav ul li {
+  position: relative;
+}
 
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 1rem;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: background 0.3s;
-      font-weight: bold;
-    }
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.3s;
+  font-weight: bold;
+}
 
-    nav ul li a:hover {
-      background: coral;
-    }
+nav ul li a:hover {
+  background: coral;
+}
 
-    /* Dropdown */
-    nav ul li ul {
-      display: none;
-      position: absolute;
-      top: 40px;
-      left: 0;
-      background: #191442;
-      border-radius: 6px;
-      padding: 10px 0;
-      min-width: 150px;
-    }
+/* Dropdown */
+nav ul li ul {
+  display: none;
+  position: absolute;
+  top: 100%;                     /* attach directly under parent */
+  left: 0;
+  background: #191442;
+  border-radius: 6px;
+  padding: 10px 0;
+  min-width: 150px;
+  transform: translateY(8px);    /* ✅ visual gap without breaking hover */
+}
 
-    nav ul li:hover ul {
-      display: block;
-    }
+nav ul li:hover > ul,
+nav ul li ul:hover {
+  display: block;
+}
 
-    nav ul li ul li {
-      width: 100%;
-    }
 
-    nav ul li ul li a {
-      display: block;
-      padding: 10px 15px;
-    }
+
 
     /* Hamburger Menu */
     .hamburger {
