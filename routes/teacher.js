@@ -37,17 +37,6 @@ router.post("/courses/add",async(req,res)=>{
     await course.create(req.body);
     res.redirect("/teacher/course");
 })
-//edit
-router.get("/courses/edit/:id",async(req,res)=>{
-    const courses=await course.findById(req.params.id);
-    res.render("editCourses.ejs",{courses});
-})
-router.post("/courses/edit/:id",async(req,res)=>{
-    const{courses,duration,price}=req.body;
-    const abc=await course.findByIdAndUpdate(req.params.id,{courses,duration,price});
-    console.log(abc);
-    res.redirect("/teacher/course");
-})
 
 //enrollment_data
 router.get("/enrollment",async(req,res)=>{
@@ -63,7 +52,7 @@ router.post("/enrollment/delete/:id",async(req,res)=>{
 
 router.post("/enrollment/approve/:id",async(req,res)=>{
     await enrollment.findByIdAndUpdate(req.params.id,{status:"approved"});
-    res.render("courses.ejs")
+    res.redirect("/teacher/enrollment");
     
 })
 // router.get("/enrollment/approve/:id",async(req,res)=>{

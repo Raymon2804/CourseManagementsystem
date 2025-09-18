@@ -14,34 +14,81 @@
       </header>
     </div>
 
-    <div class="enrollment">
-      <% enrollments.forEach(enroll => { %>
-      <tr>
-        <td>User: <%= enroll.username %></td>
-        <td>Course: <%= enroll.course %></td>
-        <td>Status:<% enroll.Status %></td>
-        <td>
-          <form action="/teacher/enrollment/approve/<%=enroll.id%>"method="post">
-            <button type="submit">approve</button>
-          </form>
-        </td>
-        <td>
-          <form action="/teacher/enrollment/delete/<%=enroll.id%>"method="post">
-            <button type="submit">delete</button>
-          </form>
-        </td>
-      </tr>
+    <div class="enrollment-section">
 
-      <% }) %>
+      <!-- Pending Enrollments -->
+      <div class="enrollment">
+        <h2>Pending Enrollments</h2>
+        <table>
+          <tr>
+            <th>User</th>
+            <th>Course</th>
+            <th>Status</th>
+            <th>Approve</th>
+            <th>Delete</th>
+          </tr>
+          <% enrollments.forEach(enroll => { %>
+            <% if(enroll.status !== "approved"){ %>
+              <tr class="enroll-row">
+                <td><%= enroll.username %></td>
+                <td><%= enroll.course %></td>
+                <td><%= enroll.status %></td>
+                <td>
+                  <form action="/teacher/enrollment/approve/<%= enroll.id %>" method="post">
+                    <button type="submit" class="approvebtn">Approve</button>
+                  </form>
+                </td>
+                <td>
+                  <form action="/teacher/enrollment/delete/<%= enroll.id %>" method="post">
+                    <button type="submit">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% } %>
+          <% }) %>
+        </table>
+      </div>
+
+      <!-- Approved Enrollments -->
+      <div class="enrollment">
+        <h2>Approved Enrollments</h2>
+        <table>
+          <tr>
+            <th>User</th>
+            <th>Course</th>
+            <th>Status</th>
+            <th>Delete</th>
+          </tr>
+          <% enrollments.forEach(enroll => { %>
+            <% if(enroll.status === "approved"){ %>
+              <tr class="enroll-row">
+                <td><%= enroll.username %></td>
+                <td><%= enroll.course %></td>
+                <td><%= enroll.status %></td>
+                <td>
+                  <form action="/teacher/enrollment/delete/<%= enroll.id %>" method="post">
+                    <button type="submit">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% } %>
+          <% }) %>
+        </table>
+      </div>
+
     </div>
 
-    <!-- footer -->
-    <div id="footer-container">
-      <footer>
-        <span>@2025</span>
-        <span style="color: orange">| Course Management System |</span>
-        <span>All Rights Reserved</span>
-      </footer>
-    </div>
+    <!-- JS to hide row on approve -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".approvebtn").forEach(btn => {
+          btn.addEventListener("click", e => {
+            const row = btn.closest("tr");
+            if(row) row.style.display = "none";
+          });
+        });
+      });
+    </script>
+
   </body>
 </html>

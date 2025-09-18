@@ -10,10 +10,14 @@ router.post("/enrolled", async (req, res) => {
   const students = await student.findOne({ username });
   const existing= await enrollment.findOne({username, course,})
   if(existing){
-    console.log("already existing");
+    return res.send(`
+      <script>
+        alert("You are already enrolled in this course!");
+        window.history.back();  // Go back to previous page
+      </script>
+    `);
   }
   await enrollment.create({username,course,status:"pending"});
-  console.log("Enrollment request sent");
   res.render("enroll.ejs", { students: students, message: "pending" });
   })
 
