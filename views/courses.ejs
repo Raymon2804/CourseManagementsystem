@@ -12,13 +12,14 @@
     <div class="container">
         <header>
             <h1>Course Management System</h1>
-            <a href="/home" class="back-to-home">Back to Home</a>
+            <a href="/home" class="back-to-home">Sign out</a>
         </header>
     <div class="heading-search">
 
     <h1 id="course-heading">ALL COURSES</h1>
     <input type="text" id="searchInput" placeholder="Search courses..." /></div>
-    <ul id="courseList">      
+    <ul id="courseList">  
+          
       <% courses.forEach(course=>{ %>
 
       <% if(role === "student"){ %>
@@ -27,17 +28,12 @@
         <h4><%= course.duration %></h4>
         <h4>₹<%= course.price %></h4>
          
-        <% if (enrolled.status === "pending") { %>
-  <button disabled>Pending</button>
-  <% } else if (enrolled.status === "accepted") { %>
-  <button disabled>Enrolled</button>
-  <% } else { %>
   <form action="/student/enrolled" method="post">
     <input type="hidden" name="username" value="<%= students.username %>" />
     <input type="hidden" name="course" value="<%= course.course %>" />
     <button type="submit">Enroll</button>
   </form>
-    <% } %>
+
 
       </li>
      
@@ -47,9 +43,21 @@
         <h3><%= course.course %></a></h3>
         <h4><%= course.duration %></h4>
         <h4>₹<%= course.price %></h4>
+
+        <form action="/teacher/delete/<%= course._id%>" method="post">
+          <button type="submit">delete</button>
+        </form>
+
      </li> 
       <% } %>
         <%})%>
+        
+          <% if(role === "student"){ %>
+          <form action="/student/course/<%= students.username %>/stdenroll" method="get">
+              <button class="enrolll-btn" >enrolled courses</button>
+          </form>
+          <% } %>
+
         <% if(role === "teacher"){%>
           <div class="enroll-add-button">
           <form action="/teacher/enrollment" method="get" >

@@ -4,6 +4,7 @@ const student = require("../models/student");
 const course = require("../models/courses");
 const enrollment = require("../models/enrollment");
 
+
 //enrolled msg...
 router.post("/enrolled", async (req, res) => {
   const { username,course } = req.body;
@@ -20,6 +21,8 @@ router.post("/enrolled", async (req, res) => {
   await enrollment.create({username,course,status:"pending"});
   res.render("enroll.ejs", { students: students, message: "pending" });
   })
+  
+
 
 //view all the courses
 router.get("/course/:username", async (req, res) => {
@@ -28,6 +31,12 @@ router.get("/course/:username", async (req, res) => {
   const studentsData = await student.findOne({ username });
   const enrolled= await enrollment.find({username})
   res.render("courses.ejs", { students:studentsData, courses, role: "student",enrolled });
+})
+router.get("/course/:username/stdenroll",async(req,res)=>{
+  const {username}=req.params;
+  const stdenrolldata= await enrollment.find({username});
+  const studentsData = await student.findOne({ username });
+  res.render("stdenroll.ejs",{stddata:stdenrolldata,student:studentsData});
 })
 
 router.get("/course/:username/:courseid",async(req,res)=>{

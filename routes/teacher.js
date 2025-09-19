@@ -55,9 +55,11 @@ router.post("/enrollment/approve/:id",async(req,res)=>{
     res.redirect("/teacher/enrollment");
     
 })
-// router.get("/enrollment/approve/:id",async(req,res)=>{
-//    res.redirect("teacher/course");   
-// })
+router.post("/delete/:id",async(req,res)=>{
+    await course.findByIdAndDelete(req.params.id);
+    res.redirect("/teacher/course");  
+})
+
 
 
 

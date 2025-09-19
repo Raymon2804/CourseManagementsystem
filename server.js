@@ -4,7 +4,6 @@ const studentRoute=require("./routes/student");
 const teacherRoute=require("./routes/teacher");
 const courses=require("./models/courses")
 const mongoose=require("mongoose");
-const fs = require("fs");
 const path= require("path");
 require("dotenv").config();
 const PORT=process.env.port;
